@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HSM.Application\HSM.Application.csproj" />
+    <ProjectReference Include="..\HSM.Contract\HSM.Contract.csproj" />
+    <ProjectReference Include="..\HSM.Domain\HSM.Domain.csproj" />
+    <ProjectReference Include="..\HSM.Infrastructure\HSM.Infrastructure.csproj" />
+    <ProjectReference Include="..\HSM.Persistance\HSM.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>
