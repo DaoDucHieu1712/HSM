@@ -1,7 +1,7 @@
-﻿using DistributedSystem.Contract.Abstractions.Shared;
+﻿using HSM.Contract.Abstractions.Shared;
 using MediatR;
 
-namespace DistributedSystem.Contract.Abstractions.Message;
+namespace HSM.Contract.Abstractions.Message;
 
 public interface ICommandHandler<TCommand> : IRequestHandler<TCommand, Result>
     where TCommand : ICommand

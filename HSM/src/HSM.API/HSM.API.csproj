@@ -9,7 +9,16 @@
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+    <PackageReference Include="Carter" Version="8.0.0" />
+    <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,10 +27,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HSM.Application\HSM.Application.csproj" />
-    <ProjectReference Include="..\HSM.Contract\HSM.Contract.csproj" />
     <ProjectReference Include="..\HSM.Domain\HSM.Domain.csproj" />
     <ProjectReference Include="..\HSM.Infrastructure\HSM.Infrastructure.csproj" />
     <ProjectReference Include="..\HSM.Persistance\HSM.Persistance.csproj" />
+    <ProjectReference Include="..\HSM.Presentation\HSM.Presentation.csproj" />
   </ItemGroup>
 
 </Project>

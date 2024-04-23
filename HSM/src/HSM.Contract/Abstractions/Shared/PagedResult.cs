@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DistributedSystem.Contract.Abstractions.Shared;
+namespace HSM.Contract.Abstractions.Shared;
 
 public class PagedResult<T>
 {

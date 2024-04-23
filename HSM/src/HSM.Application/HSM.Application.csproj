@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Behaviors\" />
     <Folder Include="DependencyInjection\Options\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Mapper\" />
-    <Folder Include="UseCases\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HSM.Contract\HSM.Contract.csproj" />
     <ProjectReference Include="..\HSM.Domain\HSM.Domain.csproj" />
+    <ProjectReference Include="..\HSM.Persistance\HSM.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

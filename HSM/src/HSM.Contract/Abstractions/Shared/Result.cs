@@ -1,4 +1,4 @@
-﻿namespace DistributedSystem.Contract.Abstractions.Shared;
+﻿namespace HSM.Contract.Abstractions.Shared;
 
 public class Result
 {

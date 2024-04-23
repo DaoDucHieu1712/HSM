@@ -1,4 +1,4 @@
-﻿using DistributedSystem.Contract.Abstractions.Shared;
+﻿using HSM.Contract.Abstractions.Shared;
 using FluentValidation;
 using MediatR;
 

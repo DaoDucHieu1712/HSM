@@ -50,8 +50,8 @@ internal sealed class ExceptionHandlingMiddleware : IMiddleware
             //ProductException.ProductFieldException => StatusCodes.Status406NotAcceptable, // Should be remove later
             BadRequestException => StatusCodes.Status400BadRequest,
             NotFoundException => StatusCodes.Status404NotFound,
-            //Application.Exceptions.ValidationException => StatusCodes.Status422UnprocessableEntity,
-            //FluentValidation.ValidationException => StatusCodes.Status400BadRequest,
+            Application.Exceptions.ValidationException => StatusCodes.Status422UnprocessableEntity,
+            FluentValidation.ValidationException => StatusCodes.Status400BadRequest,
             FormatException => StatusCodes.Status422UnprocessableEntity,
             _ => StatusCodes.Status500InternalServerError
         };

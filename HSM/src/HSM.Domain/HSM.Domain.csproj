@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\Aggregates\" />
-    <Folder Include="Abstractions\Entities\" />
-    <Folder Include="Abstractions\Primitives\" />
-    <Folder Include="Exceptions\" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>

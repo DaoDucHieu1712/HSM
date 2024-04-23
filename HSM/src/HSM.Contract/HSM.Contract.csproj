@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\Message\" />
     <Folder Include="Abstractions\Shared\" />
-    <Folder Include="Services\V1\" />
   </ItemGroup>
 
   <ItemGroup>
