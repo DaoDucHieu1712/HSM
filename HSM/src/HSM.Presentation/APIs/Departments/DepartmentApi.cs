@@ -1,11 +1,12 @@
 ﻿using Carter;
+using HSM.Application.Params;
+using HSM.Contract.Services.V1.Department;
 using HSM.Presentation.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-
 using CommandV1 = HSM.Contract.Services.V1.Department;
 
 namespace HSM.Presentation.APIs.Departments
@@ -20,6 +21,7 @@ namespace HSM.Presentation.APIs.Departments
 
             group1.MapPost(string.Empty , CreateDepartmentV1);
             group1.MapGet(string.Empty , GetDepartmentsV1);
+            group1.MapPost(string.Empty, GetDepartmentsByConditionV1);
             group1.MapGet("{departmentId}" , GetDepartmentByIdV1);
             group1.MapDelete("{departmentId}",DeleteDepartmentV1);
             group1.MapPut("{departmentId}", UpdateDepartmentV1);
@@ -39,6 +41,12 @@ namespace HSM.Presentation.APIs.Departments
         public static async Task<IResult> GetDepartmentsV1(ISender sender)
         {
             var result = await sender.Send(new CommandV1.Query.GetDepartmentsQuery());
+            return Results.Ok(result);
+        }
+
+        public static async Task<IResult> GetDepartmentsByConditionV1(ISender sender, CommandV1.Query.GetDepartmentsQuerySpec departmentsQuerySpec)
+        {
+            var result = await sender.Send(departmentsQuerySpec);
             return Results.Ok(result);
         }
 
