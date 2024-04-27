@@ -6,5 +6,5 @@ using MediatR;
 namespace HSM.Contract.Services.V1.Department
 {
     public class GetDepartmentsQuerySpec : SearchDepartmentParam,
-    IRequest<ResponseBase<List<DepartmentDto>>>;
+    IRequest<ResponseBase<PaginationResponse<DepartmentDto>>>;
 }

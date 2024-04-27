@@ -1,17 +1,14 @@
 ﻿using AutoMapper;
+using HSM.Application.Dto;
 using HSM.Contract.Services.V1.Department;
 using HSM.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HSM.Application.Mapper
 {
     public class ServiceProfile : Profile
     {
-        public ServiceProfile() {
+        public ServiceProfile()
+        {
             DepartmentMapper();
         }
 
@@ -19,6 +16,7 @@ namespace HSM.Application.Mapper
         {
             // V1
             CreateMap<Department, Response.DepartmentResponse>().ReverseMap();
+            CreateMap<Department, DepartmentDto>().ReverseMap();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace HSM.Domain.Abstractions.Repositories
 {
-    public interface IRepositoryBase<TEntity, in TKey>
+    public interface IRepositoryBase<TEntity, in TKey> : IReadRepositoryBase<TEntity>
         where TEntity : class
     {
         Task<TEntity> FindByIdAsync(TKey id, CancellationToken cancellationToken = default, params Expression<Func<TEntity, object>>[] includeProperties);

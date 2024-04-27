@@ -1,13 +1,9 @@
 ﻿using FluentValidation;
 using HSM.Application.Behaviors;
 using HSM.Application.Mapper;
+using HSM.Contract.Common;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HSM.Application.DependencyInjection.Extensions
 {
@@ -21,7 +17,8 @@ namespace HSM.Application.DependencyInjection.Extensions
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(TracingPipelineBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationDefaultBehavior<,>))
             .AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionPipelineBehavior<,>))
-            .AddValidatorsFromAssembly(HSM.Contract.AssemblyReference.Assembly, includeInternalTypes: true);
+            .AddValidatorsFromAssembly(HSM.Contract.AssemblyReference.Assembly, includeInternalTypes: true)
+            .AddScoped<IPaginationService, PaginationService>();
 
         public static IServiceCollection AddConfigureAutoMapper(this IServiceCollection services)
             => services.AddAutoMapper(typeof(ServiceProfile));

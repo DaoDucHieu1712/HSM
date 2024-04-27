@@ -90,5 +90,65 @@ namespace HSM.Persistance.Repositories
 
         public void Update(TEntity entity)
             => _dbContext.Set<TEntity>().Update(entity);
+
+        public Task<TEntity?> GetByIdAsync<TId>(TId id, CancellationToken cancellationToken = default) where TId : notnull
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity?> GetBySpecAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TResult?> GetBySpecAsync<TResult>(ISpecification<TEntity, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity?> FirstOrDefaultAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TResult?> FirstOrDefaultAsync<TResult>(ISpecification<TEntity, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity?> SingleOrDefaultAsync(ISingleResultSpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TResult?> SingleOrDefaultAsync<TResult>(ISingleResultSpecification<TEntity, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual async Task<int> CountAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            return await ApplySpecification(specification, true).CountAsync(cancellationToken);
+        }
+
+        public virtual async Task<int> CountAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<TEntity>().CountAsync(cancellationToken);
+        }
+
+        public Task<bool> AnyAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> AnyAsync(CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IAsyncEnumerable<TEntity> AsAsyncEnumerable(ISpecification<TEntity> specification)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

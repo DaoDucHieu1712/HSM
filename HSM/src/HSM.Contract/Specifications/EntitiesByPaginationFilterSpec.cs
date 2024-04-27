@@ -8,10 +8,10 @@ namespace HSM.Application.Specifications
         protected EntitiesByPaginationFilterSpec(PaginationFilter filter)
             : base(filter)
         {
-            /*            if (!filter.HasOrderBy() && typeof(T).GetProperty("CreatedOn") != null)
-                        {
-                            filter.OrderBy ??= ["CreatedOn desc"];
-                        }*/
+            if (!filter.HasOrderBy() && typeof(T).GetProperty("CreatedOnUtc") != null)
+            {
+                filter.OrderBy ??= ["CreatedOnUtc desc"];
+            }
 
             Query.PaginateBy(filter);
         }
@@ -20,7 +20,14 @@ namespace HSM.Application.Specifications
     public class EntitiesByPaginationFilterSpec<T> : EntitiesByBaseFilterSpec<T>
     {
         public EntitiesByPaginationFilterSpec(PaginationFilter filter)
-            : base(filter) =>
+            : base(filter)
+        {
+            if (!filter.HasOrderBy() && typeof(T).GetProperty("CreatedOnUtc") != null)
+            {
+                filter.OrderBy ??= ["CreatedOnUtc desc"];
+            }
+
             Query.PaginateBy(filter);
+        }
     }
 }

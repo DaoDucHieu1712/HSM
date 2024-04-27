@@ -2,6 +2,7 @@
 using HSM.Application.Common.Models;
 using HSM.Application.Dto;
 using HSM.Application.Specifications;
+using HSM.Contract.Common;
 using HSM.Contract.Services.V1.Department;
 using HSM.Domain.Abstractions.Repositories;
 using MediatR;
@@ -24,20 +25,20 @@ namespace HSM.Application.UseCases.V1.Queries.Department
         }
     }
 
-    public class GetDepartmentByConditionQueryHandler : IRequestHandler<GetDepartmentsQuerySpec, ResponseBase<List<DepartmentDto>>>
+    public class GetDepartmentByConditionQueryHandler(IRepositoryBase<Domain.Entities.Department, Guid> _departmentRepository, IPaginationService paginationService) : IRequestHandler<GetDepartmentsQuerySpec, ResponseBase<PaginationResponse<DepartmentDto>>>
 
     {
-        private readonly IRepositoryBase<Domain.Entities.Department, Guid> _departmentRepository;
-        public GetDepartmentByConditionQueryHandler(IRepositoryBase<Domain.Entities.Department, Guid> departmentRepository)
-        {
-            _departmentRepository = departmentRepository;
-        }
-
-        public async Task<ResponseBase<List<DepartmentDto>>> Handle(GetDepartmentsQuerySpec request, CancellationToken cancellationToken)
+        public async Task<ResponseBase<PaginationResponse<DepartmentDto>>> Handle(GetDepartmentsQuerySpec request, CancellationToken cancellationToken)
         {
             var spec = new DepartmentSpec(request);
-            var departments = await _departmentRepository.ListAsync(spec);
-            return new ResponseBase<List<DepartmentDto>>(departments);
+            var departments = await paginationService.PaginatedListAsync(
+                _departmentRepository,
+                spec,
+                request.PageNumber,
+                request.PageSize,
+                cancellationToken);
+
+            return new ResponseBase<PaginationResponse<DepartmentDto>>(departments);
         }
     }
 }
