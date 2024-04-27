@@ -1,9 +1,4 @@
 ﻿using HSM.Application.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HSM.Application.Specifications
 {
@@ -13,10 +8,10 @@ namespace HSM.Application.Specifications
         protected EntitiesByPaginationFilterSpec(PaginationFilter filter)
             : base(filter)
         {
-            if (!filter.HasOrderBy() && typeof(T).GetProperty("CreatedOn") != null)
-            {
-                filter.OrderBy ??= ["CreatedOn desc"];
-            }
+            /*            if (!filter.HasOrderBy() && typeof(T).GetProperty("CreatedOn") != null)
+                        {
+                            filter.OrderBy ??= ["CreatedOn desc"];
+                        }*/
 
             Query.PaginateBy(filter);
         }

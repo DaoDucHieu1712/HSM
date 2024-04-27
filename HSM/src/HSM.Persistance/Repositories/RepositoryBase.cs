@@ -1,4 +1,6 @@
-﻿using HSM.Domain.Abstractions.Entities;
+﻿using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
+using HSM.Domain.Abstractions.Entities;
 using HSM.Domain.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -9,9 +11,16 @@ namespace HSM.Persistance.Repositories
         where TEntity : Entity<TKey>
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly ISpecificationEvaluator _specificationEvaluator;
 
-        public RepositoryBase(ApplicationDbContext dbContext)
-            => _dbContext = dbContext;
+        public RepositoryBase(ApplicationDbContext dbContext) : this(dbContext, SpecificationEvaluator.Default)
+        {
+        }
+        public RepositoryBase(ApplicationDbContext dbContext, ISpecificationEvaluator specificationEvaluator)
+        {
+            _dbContext = dbContext;
+            _specificationEvaluator = specificationEvaluator;
+        }
 
         public void Dispose()
             => _dbContext?.Dispose();
@@ -29,6 +38,36 @@ namespace HSM.Persistance.Repositories
 
             return items;
         }
+
+        public async Task<List<TEntity>> ListAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Set<TEntity>().ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> ListAsync(ISpecification<TEntity> specification, CancellationToken cancellationToken = default)
+        {
+            var queryResult = await ApplySpecification(specification).ToListAsync(cancellationToken);
+
+            return specification.PostProcessingAction == null ? queryResult : specification.PostProcessingAction(queryResult).ToList();
+        }
+
+        public async Task<List<TResult>> ListAsync<TResult>(ISpecification<TEntity, TResult> specification, CancellationToken cancellationToken = default)
+        {
+            var queryResult = await ApplySpecification(specification).ToListAsync(cancellationToken);
+
+            return specification.PostProcessingAction == null ? queryResult : specification.PostProcessingAction(queryResult).ToList();
+        }
+
+        protected virtual IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> specification, bool evaluateCriteriaOnly = false)
+        {
+            return _specificationEvaluator.GetQuery(_dbContext.Set<TEntity>().AsQueryable(), specification, evaluateCriteriaOnly);
+        }
+
+        protected virtual IQueryable<TResult> ApplySpecification<TResult>(ISpecification<TEntity, TResult> specification)
+        {
+            return _specificationEvaluator.GetQuery(_dbContext.Set<TEntity>().AsQueryable(), specification);
+        }
+
 
         public async Task<TEntity> FindByIdAsync(TKey id, CancellationToken cancellationToken = default, params Expression<Func<TEntity, object>>[] includeProperties)
             => await FindAll(null, includeProperties)

@@ -1,17 +1,12 @@
-﻿using HSM.Domain.Abstractions.Repositories;
-using HSM.Domain.Abstractions;
+﻿using HSM.Domain.Abstractions;
+using HSM.Domain.Abstractions.Repositories;
 using HSM.Persistance.DependencyInjection.Options;
 using HSM.Persistance.Interceptors;
 using HSM.Persistance.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace HSM.Persistance.DependencyInjection.Extensions
 {
@@ -33,7 +28,7 @@ namespace HSM.Persistance.DependencyInjection.Extensions
            .EnableSensitiveDataLogging(true)
            .UseLazyLoadingProxies(true)
            .UseMySql(
-                    connectionString : configuration.GetConnectionString("MySQL"),
+                    connectionString: configuration.GetConnectionString("MySQL"),
                     ServerVersion.AutoDetect(configuration.GetConnectionString("MySQL")),
                     mySqlOptionsAction: optionsBuilder
                         => optionsBuilder.ExecutionStrategy(
@@ -46,6 +41,8 @@ namespace HSM.Persistance.DependencyInjection.Extensions
             .AddInterceptors(outboxInterceptor,
                     auditableInterceptor);
             });
+
+            //services.AddScoped(typeof(ISpecificationEvaluator), typeof(SpecificationEvaluator));
         }
 
         public static void AddInterceptorDbContext(this IServiceCollection services)

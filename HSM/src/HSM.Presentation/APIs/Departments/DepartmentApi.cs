@@ -1,5 +1,4 @@
 ﻿using Carter;
-using HSM.Application.Params;
 using HSM.Contract.Services.V1.Department;
 using HSM.Presentation.Abstractions;
 using MediatR;
@@ -19,11 +18,11 @@ namespace HSM.Presentation.APIs.Departments
             var group1 = app.NewVersionedApi("departments")
                 .MapGroup(BaseUrl).HasApiVersion(1);
 
-            group1.MapPost(string.Empty , CreateDepartmentV1);
-            group1.MapGet(string.Empty , GetDepartmentsV1);
-            group1.MapPost(string.Empty, GetDepartmentsByConditionV1);
-            group1.MapGet("{departmentId}" , GetDepartmentByIdV1);
-            group1.MapDelete("{departmentId}",DeleteDepartmentV1);
+            group1.MapPost(string.Empty, CreateDepartmentV1);
+            group1.MapGet(string.Empty, GetDepartmentsV1);
+            group1.MapPost("condition", GetDepartmentsByConditionV1);
+            group1.MapGet("{departmentId}", GetDepartmentByIdV1);
+            group1.MapDelete("{departmentId}", DeleteDepartmentV1);
             group1.MapPut("{departmentId}", UpdateDepartmentV1);
         }
         #region ====== version 1 ======
@@ -44,7 +43,7 @@ namespace HSM.Presentation.APIs.Departments
             return Results.Ok(result);
         }
 
-        public static async Task<IResult> GetDepartmentsByConditionV1(ISender sender, CommandV1.Query.GetDepartmentsQuerySpec departmentsQuerySpec)
+        public static async Task<IResult> GetDepartmentsByConditionV1(ISender sender, GetDepartmentsQuerySpec departmentsQuerySpec)
         {
             var result = await sender.Send(departmentsQuerySpec);
             return Results.Ok(result);
