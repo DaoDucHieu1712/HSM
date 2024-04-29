@@ -37,7 +37,7 @@ export const SignOutButton = () => {
         onClick={(event) => setAnchorEl(event.currentTarget)}
         color="inherit"
       >
-       
+       Sign Out
       </IconButton>
       <Menu
         id="menu-appbar"

@@ -9,45 +9,49 @@ import { Home } from "./pages/Home";
 import { useState, useEffect } from "react";
 import { loginRequest } from './AuthConfig';
 
-const WrappedView = () =>{
-  const {instance} = useMsal();
-  const activeAccount = instance.getActiveAccount();
-  const handleRedirect = () => {
-    instance 
-    .loginRedirect({
-      ...loginRequest,
-      prompt: 'create'
-    })
-  }
+// const WrappedView = () =>{
+//   const {instance} = useMsal();
+//   const activeAccount = instance.getActiveAccount();
+//   const handleRedirect = () => {
+//     instance 
+//     .loginRedirect({
+//       ...loginRequest,
+//       prompt: 'create'
+//     })
+//   }
 
 
-  return (
-    <div className='App'>
-       <AuthenticatedTemplate>
-        {activeAccount ? ( <p>LOGIN_SUCCESS</p> ): null}
-          </AuthenticatedTemplate>
+//   return (
+//     <div className='App'>
+//        <AuthenticatedTemplate>
+//         {activeAccount ? ( <p>LOGIN_SUCCESS</p> ): null}
+//           </AuthenticatedTemplate>
 
-          <UnauthenticatedTemplate>
+//           <UnauthenticatedTemplate>
             
-              <center>Please sign-in to see your profile information.</center>
-              <button onClick={handleRedirect}> sign up </button>
+//               <center>Please sign-in to see your profile information.</center>
+//               <button onClick={handleRedirect}> sign up </button>
            
-          </UnauthenticatedTemplate>
-    </div>
-    // <MsalProvider instance={instance}>
-    //     <PageLayout>
-    //       <Grid container justifyContent="center">
-    //         {/* <Pages /> */}
-    //       </Grid>
-    //     </PageLayout>
-    //   </MsalProvider>
+//           </UnauthenticatedTemplate>
+//     </div>
+//     // <MsalProvider instance={instance}>
+//     //     <PageLayout>
+//     //       <Grid container justifyContent="center">
+//     //         {/* <Pages /> */}
+//     //       </Grid>
+//     //     </PageLayout>
+//     //   </MsalProvider>
 
-  );
-}
+//   );
+// }
 const App = ({instance}) => {
   return (
     <MsalProvider instance={instance}>
-      <WrappedView></WrappedView>
+            <PageLayout>
+            <Grid container justifyContent="center">
+            {/* <Pages /> */}
+           </Grid>
+        </PageLayout>
     </MsalProvider>
   )
 };
