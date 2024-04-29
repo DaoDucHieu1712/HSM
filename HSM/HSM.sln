@@ -26,8 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSM.Persistance", "src\HSM.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSM.Presentation", "src\HSM.Presentation\HSM.Presentation.csproj", "{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "hms.frontend", "HMS.FrontEnd\hms.frontend.esproj", "{CFC013AC-5722-40DB-9127-05B9BFA60814}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,12 +60,6 @@ Global
 		{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFC013AC-5722-40DB-9127-05B9BFA60814}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,7 +72,6 @@ Global
 		{F55B9DC3-70D9-42F7-8A74-8BC3A53C1BBA} = {D712526C-CD94-4B9F-804B-BFC15F3F83B4}
 		{F4A1B7DA-3DF3-4E19-AEC7-C0A6FE379028} = {D712526C-CD94-4B9F-804B-BFC15F3F83B4}
 		{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E} = {D712526C-CD94-4B9F-804B-BFC15F3F83B4}
-		{CFC013AC-5722-40DB-9127-05B9BFA60814} = {D712526C-CD94-4B9F-804B-BFC15F3F83B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2000A04A-7F96-4AAF-8F62-12E4C4EE5CE5}
