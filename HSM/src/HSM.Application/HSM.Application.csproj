@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="DependencyInjection\Options\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="IdentityUser\" />
   </ItemGroup>
 
   <ItemGroup>

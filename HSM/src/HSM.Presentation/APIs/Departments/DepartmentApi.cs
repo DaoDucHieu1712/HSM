@@ -19,11 +19,12 @@ namespace HSM.Presentation.APIs.Departments
                 .MapGroup(BaseUrl).HasApiVersion(1);
 
             group1.MapPost(string.Empty, CreateDepartmentV1);
-            group1.MapGet(string.Empty, GetDepartmentsV1);
+            group1.MapGet(string.Empty , GetDepartmentsV1).RequireAuthorization();
             group1.MapPost("condition", GetDepartmentsByConditionV1);
             group1.MapGet("{departmentId}", GetDepartmentByIdV1);
             group1.MapDelete("{departmentId}", DeleteDepartmentV1);
             group1.MapPut("{departmentId}", UpdateDepartmentV1);
+           
         }
         #region ====== version 1 ======
 
