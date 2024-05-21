@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSM.Infrastructure", "src\H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSM.Persistance", "src\HSM.Persistance\HSM.Persistance.csproj", "{F4A1B7DA-3DF3-4E19-AEC7-C0A6FE379028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSM.Presentation", "src\HSM.Presentation\HSM.Presentation.csproj", "{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HSM.Presentation", "src\HSM.Presentation\HSM.Presentation.csproj", "{4DE13C0A-7ECC-4470-A89B-6EB9B46AB23E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
